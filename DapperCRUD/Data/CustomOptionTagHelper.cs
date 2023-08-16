@@ -1,4 +1,4 @@
-﻿using DapperCRUD.Repository;
+﻿using DapperCRUD.Repository.Interface;
 using Mapster;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;

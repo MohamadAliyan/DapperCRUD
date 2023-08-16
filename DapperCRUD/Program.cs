@@ -1,5 +1,6 @@
 using DapperCRUD.Data;
-using DapperCRUD.Repository;
+using DapperCRUD.Repository.Interface;
+using DapperCRUD.Repository.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
@@ -11,6 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IDapperContext, DapperContext>();
 builder.Services.AddTransient<IBranchRepository, BranchRepository>();
 builder.Services.AddTransient<IBankRepository, BankRepository>();
+builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+builder.Services.AddTransient<IAddressRepository, AddressRepository>();
 
 
 
@@ -32,6 +35,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 
 app.Run();

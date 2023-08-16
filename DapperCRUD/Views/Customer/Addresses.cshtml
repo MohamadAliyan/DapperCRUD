@@ -1,0 +1,55 @@
+﻿@model DapperCRUD.Models.Customer
+
+@{
+    ViewData["Title"] = "Index";
+    var addresses = Model.Addresses;
+}
+
+<h1>Customer : @Model.Name</h1>
+
+<p>
+    <a asp-action="AddAddresses">Create New address</a>
+</p>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Addresses[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Addresses[0].Street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Addresses[0].Alley)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Addresses[0].PostalCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Addresses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Street)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alley)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-danger" asp-action="DeleteAddress" asp-route-Id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/lib/sweetalert2/sweetalert2.min.js"></script>
