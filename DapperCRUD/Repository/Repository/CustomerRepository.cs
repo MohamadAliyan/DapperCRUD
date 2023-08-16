@@ -21,10 +21,12 @@ namespace DapperCRUD.Repository.Repository
         {
 
             var query = "select * from customer";
-            using var connection = _context.CreateConnection();
-            var result = await connection.QueryAsync<Customer>(query);
-            return result.ToList();
-
+            using (var connection = _context.CreateConnection())
+            {
+                var result = await connection.QueryAsync<Customer>(query);
+                var back = result.ToList();
+                return back;
+            }
         }
         public async Task<Customer> GetById(int id)
         {

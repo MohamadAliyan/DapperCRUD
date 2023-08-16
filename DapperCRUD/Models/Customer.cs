@@ -11,4 +11,5 @@
         //todo address customer must be table and list<address>
         public List<Address>? Addresses { get; set; }
     }
+
 }
