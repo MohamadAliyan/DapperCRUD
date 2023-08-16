@@ -14,14 +14,30 @@ namespace DapperCRUD.Repository.Repository
         {
             _context = context;
         }
-        public bool Add()
+
+        public async Task Create(CreatedAddressDTO address)
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO Address (City, Street,Alley,PostalCode,CustomerId) VALUES (@City, @Street,@Alley,@PostalCode,@CustomerId)";
+            var parameters = new DynamicParameters();
+            parameters.Add("City", address.City, DbType.String);
+            parameters.Add("Street", address.Street, DbType.String);
+            parameters.Add("Alley", address.Alley, DbType.String);
+            parameters.Add("CustomerId", address.CustomerId, DbType.Int32);
+            parameters.Add("PostalCode", address.PostalCode, DbType.String);
+
+            using var connection = _context.CreateConnection();
+
+            await connection.ExecuteAsync(query, parameters);
+
         }
 
-        public void delet()
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var query = "DELETE FROM Address WHERE Id = @Id";
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, new { id });
+            }
         }
 
         public List<Address> GetById(int id)

@@ -10,9 +10,11 @@ namespace DapperCRUD.Repository.Repository
     public class CustomerRepository : ICustomerRepository
     {
         private readonly IDapperContext _context;
-        public CustomerRepository(IDapperContext context)
+        private readonly IAddressRepository _addressRepository;
+        public CustomerRepository(IDapperContext context, IAddressRepository addressRepository)
         {
             _context = context;
+            _addressRepository = addressRepository;
         }
 
         public async Task<List<Customer>> GetAllAsync()
@@ -30,15 +32,8 @@ namespace DapperCRUD.Repository.Repository
             var query = $"select * from customer where Id = {id}";
             using var connection = _context.CreateConnection();
             var result = await connection.QueryFirstAsync<Customer>(query);
-            result.Addresses = GetAddressesById(id);
+            result.Addresses = _addressRepository.GetById(id);
             return result;
-
         }
-
-        private List<Address> GetAddressesById(int id)
-        {
-
-        }
-
-    }
+    } 
 }

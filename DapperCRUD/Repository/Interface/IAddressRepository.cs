@@ -5,8 +5,8 @@ namespace DapperCRUD.Repository.Interface
     public interface IAddressRepository
     {
         List<Address> GetById(int id);
-        bool Add();
-        void delet();
+        Task Create(CreatedAddressDTO address);
+        Task Delete(int id);
     }
 
 }
