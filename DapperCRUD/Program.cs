@@ -1,5 +1,6 @@
 using DapperCRUD.Data;
-using DapperCRUD.Repository;
+using DapperCRUD.Repository.Interface;
+using DapperCRUD.Repository.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();

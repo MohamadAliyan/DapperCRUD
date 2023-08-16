@@ -9,6 +9,6 @@
         public string NationalCode { get; set; }
 
         //todo address customer must be table and list<address>
-        //public List<Address> Addresses { get; set; }
+        public List<Address>? Addresses { get; set; }
     }
 }

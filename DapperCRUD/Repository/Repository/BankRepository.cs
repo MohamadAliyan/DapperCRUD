@@ -1,10 +1,11 @@
 ﻿using Dapper;
 using DapperCRUD.Data;
 using DapperCRUD.Models;
+using DapperCRUD.Repository.Interface;
 using System.Data;
 using static Dapper.SqlMapper;
 
-namespace DapperCRUD.Repository
+namespace DapperCRUD.Repository.Repository
 {
     public class BankRepository : IBankRepository
     {

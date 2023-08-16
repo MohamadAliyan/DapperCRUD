@@ -1,6 +1,6 @@
 ﻿using DapperCRUD.Models;
 
-namespace DapperCRUD.Repository
+namespace DapperCRUD.Repository.Interface
 {
     public interface IBranchRepository
     {

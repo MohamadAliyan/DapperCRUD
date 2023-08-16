@@ -1,5 +1,5 @@
 ﻿using DapperCRUD.Models;
-using DapperCRUD.Repository;
+using DapperCRUD.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DapperCRUD.Controllers
